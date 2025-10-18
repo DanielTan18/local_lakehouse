@@ -11,7 +11,7 @@ start_services() {
     sleep 5
     
     docker compose -f docker-compose-trino.yaml up -d
-    sleep 30
+    sleep 5
     
     docker compose -f docker-compose-airflow.yaml up -d
     sleep 5

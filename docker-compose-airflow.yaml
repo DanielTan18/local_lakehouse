@@ -90,7 +90,7 @@ services:
     image: postgres:13
     environment:
       POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
+      POSTGRES_PASSWORD: xxxxxx
       POSTGRES_DB: airflow
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
@@ -117,6 +117,9 @@ services:
 
   airflow-apiserver:
     <<: *airflow-common
+    environment:
+      <<: *airflow-common-env  # Make sure this line exists!
+      AIRFLOW__API_AUTH__JWT_SECRET: pAaHqlCPI9gQdDMFIFi6iA==
     command: api-server
     ports:
       - "8081:8080"
